@@ -85,109 +85,97 @@ const Card = ({ task }) => {
   };
 
   const layout = [
-    { i: "a", x: 0, y: 0, w: 4, h: 4, static: true },
-    { i: "b", x: 4, y: 0, w: 2, h: 2, },
-    { i: "c", x: 1, y: 0, w: 2, h: 2 },
+    { i: "a", x: 2, y: 0, w: 3, h: 3.5, minW: 1, minH: 3.3, },
+    { i: "b", x: 6, y: 0, w: 3, h: 3, minW: 1.4, minH: 2.9 },
+
   ];
 
   return (
-    <div className="cardContainer">
-      <GridLayout
-        className="layout"
-        layout={layout}
-        cols={12}
-        rowHeight={130}
-        width={1200}
-      >
-        <div className="div1" key="a">
-          <div>
-            <DragDropContext onDragEnd={handleOnDragEnd}>
-              <div
-                className="cardContainer"
-                style={{ background: Color.primary }}
-              >
-                <h1>New Task</h1>
-                <Droppable droppableId="newTask">
-                  {(provided) => (
-                    <div
-                      className="data"
-                      {...provided.droppableProps}
-                      ref={provided.innerRef}
-                    >
-                      {data.newTask.map(({ id, name }, index) => {
-                        return (
-                          <Draggable key={id} draggableId={name} index={index}>
-                            {(provided) => (
-                              <div
-                                className="card"
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                              >
-                                <div>
-                                  <p>{name}</p>
-                                </div>
-                              </div>
-                            )}
-                          </Draggable>
-                        );
-                      })}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-                &nbsp;
-              </div>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <div className="cardContainer">
+        <GridLayout
+          className="layout"
+          layout={layout}
+          cols={12}
+          rowHeight={130}
+          width={1200}
+        >
+          <div className="div1" key="a">
+            <h1>New Task</h1>
+            <hr />
 
-              <div
-                className="cardContainer"
-                style={{ background: Color.primary }}
-              >
-                <h1>Working Task</h1>
-                <Droppable droppableId="working">
-                  {(provided) => (
-                    <div
-                      className="data"
-                      {...provided.droppableProps}
-                      ref={provided.innerRef}
-                    >
-                      {data.working.map(({ id, name }, index) => {
-                        return (
-                          <Draggable key={id} draggableId={name} index={index}>
-                            {(provided) => (
-                              <div
-                                className="card"
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                              >
-                                <div>
-                                  <p>{name}</p>
-                                </div>
-                              </div>
-                            )}
-                          </Draggable>
-                        );
-                      })}
+            <Droppable droppableId="newTask">
+              {(provided) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {data.newTask.map(({ id, name }, index) => {
+                    return (
+                      <Draggable key={id} draggableId={name} index={index}>
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <p>{name}</p>
+                          </div>
+                        )}
+                      </Draggable>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
 
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-                &nbsp;
-              </div>
-            </DragDropContext>
+            &nbsp;
+
           </div>
-        </div>
-        <div className="div2" key="b">
-          b
-        </div>
-        <div className="div3" key="c">
-          c
-        </div>
-      </GridLayout>
+          <div className="div2" key="b">
+            <div
+            >
+              <h1>Working Task</h1>
+              <hr />
+              <Droppable droppableId="working">
+                {(provided) => (
+                  <div
 
-    </div>
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {data.working.map(({ id, name }, index) => {
+                      return (
+                        <Draggable key={id} draggableId={name} index={index}>
+                          {(provided) => (
+                            <div
+
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+
+                              <p>{name}</p>
+                            </div>
+
+                          )}
+                        </Draggable>
+                      );
+                    })}
+
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+              &nbsp;
+            </div>
+          </div>
+
+        </GridLayout>
+
+      </div>
+    </DragDropContext>
   );
 };
 
