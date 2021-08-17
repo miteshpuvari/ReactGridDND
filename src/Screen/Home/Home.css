@@ -1,0 +1,30 @@
+.main {
+  margin-bottom: 40px;
+}
+.TaskManager {
+  width: 30%;
+  margin: 0 auto;
+}
+.cardContainer {
+  border-radius: 5px;
+}
+.card {
+  background-color: blueviolet;
+  margin: 10px;
+  color: #e2e5de;
+}
+.data {
+  width: 240px;
+  margin: 0 auto;
+}
+.addTaskContainer {
+  margin-top: 40px;
+}
+.selectTask {
+  display: flex;
+  width: 30%;
+  margin: 0 auto;
+}
+.radio {
+  margin-top: 15px;
+}

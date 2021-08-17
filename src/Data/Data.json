@@ -1,0 +1,38 @@
+{
+  "newTask": [
+    {
+      "id": "0",
+      "name": "1. JavaScript Hover Task"
+    },
+    {
+      "id": "1",
+      "name": "2. JavaScript Crud Operation"
+    },
+    {
+      "id": "2",
+      "name": "3. React Crud operation"
+    },
+    {
+      "id": "3",
+      "name": "4. React Drag and drop Opeartion"
+    }
+  ],
+  "working": [
+    {
+      "id": "4",
+      "name": "1. React Beautiful DND task"
+    },
+    {
+      "id": "5",
+      "name": "2. React DND Drah from New task"
+    },
+    {
+      "id": "6",
+      "name": "3. React DND Drah from Working"
+    },
+    {
+      "id": "7",
+      "name": "4. React DND Drah and drop"
+    }
+  ]
+}
