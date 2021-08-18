@@ -11,10 +11,10 @@
 .div3 {
   background-color: aqua;
 }
-
-.innercard {
-  margin: 10px;
-  border-radius: 10px;
+.header {
+  background-color: #faebd7;
+  position: relative;
+  top: -21px;
 }
 
 .react-grid-layout {

@@ -2,12 +2,23 @@ import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import GridLayout from "react-grid-layout";
 
-import Color from "../../Constant/Color";
 import "../Card/Card.css";
 
 const Card = ({ task }) => {
   const [data, setData] = useState(task);
-  const [size, setSize] = useState({ with: 200, height: 200 })
+
+  const layout = [
+    {
+      i: "a",
+      x: 2,
+      y: 0,
+      w: 3,
+      h: 3.5,
+      minW: 1,
+      minH: 3.3,
+    },
+    { i: "b", x: 6, y: 0, w: 3, h: 3, minW: 1.4, minH: 2.9 },
+  ]
 
   //drag and drop
   const handleOnDragEnd = (result) => {
@@ -84,11 +95,6 @@ const Card = ({ task }) => {
     }
   };
 
-  const layout = [
-    { i: "a", x: 2, y: 0, w: 3, h: 3.5, minW: 1, minH: 3.3, },
-    { i: "b", x: 6, y: 0, w: 3, h: 3, minW: 1.4, minH: 2.9 },
-
-  ];
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -99,17 +105,16 @@ const Card = ({ task }) => {
           cols={12}
           rowHeight={130}
           width={1200}
+          draggableHandle=".header"
         >
           <div className="div1" key="a">
-            <h1>New Task</h1>
-            <hr />
+            <div className="header">
+              <h1>New Task</h1>
+            </div>
 
             <Droppable droppableId="newTask">
               {(provided) => (
-                <div
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                >
+                <div {...provided.droppableProps} ref={provided.innerRef}>
                   {data.newTask.map(({ id, name }, index) => {
                     return (
                       <Draggable key={id} draggableId={name} index={index}>
@@ -129,36 +134,27 @@ const Card = ({ task }) => {
                 </div>
               )}
             </Droppable>
-
             &nbsp;
-
           </div>
           <div className="div2" key="b">
-            <div
-            >
-              <h1>Working Task</h1>
-              <hr />
+            <div className="header">
+              <h1>New Task</h1>
+            </div>
+            <div>
               <Droppable droppableId="working">
                 {(provided) => (
-                  <div
-
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                  >
+                  <div {...provided.droppableProps} ref={provided.innerRef}>
                     {data.working.map(({ id, name }, index) => {
                       return (
                         <Draggable key={id} draggableId={name} index={index}>
                           {(provided) => (
                             <div
-
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                             >
-
                               <p>{name}</p>
                             </div>
-
                           )}
                         </Draggable>
                       );
@@ -171,13 +167,10 @@ const Card = ({ task }) => {
               &nbsp;
             </div>
           </div>
-
         </GridLayout>
-
       </div>
     </DragDropContext>
   );
 };
 
 export default Card;
-
